@@ -12,6 +12,6 @@
     <description>$description$</description>
     <releaseNotes>Initial</releaseNotes>
     <copyright>Copyright 2014</copyright>
-    <tags></tags>
+    <tags>Honeybadger ErrorReporter</tags>
   </metadata>
 </package>

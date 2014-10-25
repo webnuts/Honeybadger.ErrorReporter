@@ -58,14 +58,19 @@ namespace Honeybadger.ErrorReporter
 
         private static dynamic GetContext()
         {
-            var user = Membership.GetUser();
+            MembershipUser membershipUser = null;
+            try
+            {
+                membershipUser = Membership.GetUser();
+            }
+            catch { }
             dynamic context = null;
-            if (user != null)
+            if (membershipUser != null)
             {
                 context = new
                 {
-                    username = user.UserName,
-                    user_id = user.ProviderUserKey
+                    username = membershipUser.UserName,
+                    user_id = membershipUser.ProviderUserKey
                 };
             }
             return context;

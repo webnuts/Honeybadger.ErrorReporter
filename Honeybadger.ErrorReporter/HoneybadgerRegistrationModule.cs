@@ -7,7 +7,22 @@ namespace Honeybadger.ErrorReporter
     {
         public void Init(HttpApplication httpApplication)
         {
+            httpApplication.AuthenticateRequest += AuthenticateRequest;
             httpApplication.Error += ContextError;
+        }
+
+        static void AuthenticateRequest(object sender, EventArgs e)
+        {
+            var app = (HttpApplication)sender;
+
+            var honeybadgerErrorTestMessage = app.Request.QueryString["HoneybadgerErrorTest"];
+
+            if (string.IsNullOrEmpty(honeybadgerErrorTestMessage) == false)
+            {
+                var honeybadgerService = new HoneybadgerService();
+                string honeybadgerResponse;
+                honeybadgerService.ReportException(new Exception(honeybadgerErrorTestMessage), out honeybadgerResponse);
+            }
         }
 
         static void ContextError(object sender, EventArgs e)

@@ -47,3 +47,8 @@ Add ErrorRegistrationModule to your web.config file:
     </system.webServer>
 </configuration>
 ```
+
+## Testing
+
+After completing the installation, you can test the error reporter by opening your website in your browser, and add ?HoneybadgerErrorTest=test.
+For example: http://example.com/?HoneybadgerErrorTest=test. That will send a test error message to Honeybadger, and you should be able to see it inside your Honeybadger account.
