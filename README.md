@@ -28,7 +28,7 @@ Example:
 </configuration>
 ```
 
-### 2. Caching all the errors
+### 2. Intercepting all the errors
 
 Add ErrorRegistrationModule to your web.config file:
 
